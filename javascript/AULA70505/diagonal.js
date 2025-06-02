@@ -1,0 +1,1 @@
+//Calcule a diagonal de uma matriz
