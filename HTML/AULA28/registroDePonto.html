@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Marcação de Ponto</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    .funcionario { margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; }
+    button { margin-right: 10px; }
+    .registros { margin-top: 5px; font-size: 0.9em; color: #333; }
+  </style>
+</head>
+<body>
+
+  <h2>Registro de Ponto</h2>
+
+  <div id="funcionarios"></div>
+
+  <script>
+    const funcionarios = ["Ana", "Bruno", "Carlos", "Daniela", "Eduardo", "Fernanda"];
+
+    const container = document.getElementById("funcionarios");
+
+    funcionarios.forEach(nome => {
+      const div = document.createElement("div");
+      div.className = "funcionario";
+      div.innerHTML = `
+        <strong>${nome}</strong><br>
+        <button onclick="registrar('${nome}', 'entrada')">Entrada</button>
+        <button onclick="registrar('${nome}', 'saida')">Saída</button>
+        <div class="registros" id="registro-${nome}"></div>
+      `;
+      container.appendChild(div);
+    });
+
+    function registrar(nome, tipo) {
+      const horario = new Date().toLocaleTimeString();
+      const data = new Date().toLocaleDateString();
+      const registro = `${data} - ${tipo.toUpperCase()} às ${horario}`;
+
+      const div = document.getElementById(`registro-${nome}`);
+      div.innerHTML += `<div>${registro}</div>`;
+
+      // Salva no localStorage para manter ao recarregar
+      const chave = `ponto-${nome}`;
+      const anteriores = JSON.parse(localStorage.getItem(chave)) || [];
+      anteriores.push(registro);
+      localStorage.setItem(chave, JSON.stringify(anteriores));
+    }
+
+    // Carrega registros anteriores
+    funcionarios.forEach(nome => {
+      const div = document.getElementById(`registro-${nome}`);
+      const chave = `ponto-${nome}`;
+      const registros = JSON.parse(localStorage.getItem(chave)) || [];
+      registros.forEach(r => {
+        div.innerHTML += `<div>${r}</div>`;
+      });
+    });
+  </script>
+</body>
+</html>
