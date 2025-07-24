@@ -5,7 +5,7 @@ header, main, footer{
 
 section{
     margin: 10px 0;
-    padding: 20px;
+    padding: 50px;
     border: 1px solid black;
 }
 
@@ -14,7 +14,11 @@ h2{
     text-decoration: underline;
 }
 
-.subtitulo{
+.destaque{
     font-style: italic;
     background-color: azure;
+}
+
+#importante{
+    border-top: 10px solid black;
 }
