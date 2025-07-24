@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function separarNaPrimeiraVogal(palavra) {
+            const vogais = "aeiouAEIOU"; // Vogais a serem verificadas, incluindo maiúsculas
+            let indicePrimeiraVogal = -1;
+
+            // Itera sobre a palavra para encontrar a primeira vogal
+            for (let i = 0; i < palavra.length; i++) {
+                if (vogais.includes(palavra[i])) {
+                    indicePrimeiraVogal = i;
+                    break; // Sai do loop assim que a primeira vogal é encontrada
+                }
+            }
+
+            // Se uma vogal foi encontrada, separa a palavra
+            if (indicePrimeiraVogal !== -1) {
+                const parte1 = palavra.substring(0, indicePrimeiraVogal + 1);
+                const parte2 = palavra.substring(indicePrimeiraVogal + 1);
+                return [parte1, parte2];
+            } else {
+                // Caso não encontre vogais, retorna a palavra original em um array
+                return [palavra];
+            }
+        }
+
+        console.log(separarNaPrimeiraVogal("ola"));
+
+    </script>
+</body>
+
+</html>
