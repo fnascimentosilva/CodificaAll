@@ -1,0 +1,20 @@
+header, main, footer{
+    background-color: aqua;
+    color: black;
+}
+
+section{
+    margin: 10px 0;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+h2{
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.subtitulo{
+    font-style: italic;
+    background-color: azure;
+}
