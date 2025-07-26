@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Hamburguer</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* Estilos da Navegação Padrão (Desktop) */
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            /* Para alinhar os itens horizontalmente no desktop */
+        }
+
+        .main-nav ul li {
+            margin-left: 20px;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav ul li a:hover {
+            color: #ddd;
+        }
+
+        /* Estilos do Ícone do Hamburguer (Inicialmente oculto) */
+        .hamburger-menu {
+            display: none;
+            /* Oculta o hambúrguer por padrão em telas grandes */
+            cursor: pointer;
+            flex-direction: column;
+            /* Para empilhar as barras verticalmente */
+            justify-content: space-between;
+            /* Espaço entre as barras */
+            width: 30px;
+            height: 20px;
+            /* Altura total para as 3 barras e 2 espaços */
+        }
+
+        .hamburger-menu .bar {
+            height: 3px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+            /* Transição para as barras */
+        }
+
+        /* --- Media Query: Telas <= 600px --- */
+        @media (max-width: 600px) {
+
+            /* Exibe o Ícone do Hamburguer */
+            .hamburger-menu {
+                display: flex;
+                /* Exibe o ícone do hambúrguer */
+            }
+
+            /* Oculta a Navegação Padrão no Mobile */
+            .main-nav {
+                position: absolute;
+                /* Posição absoluta para sobrepor o conteúdo */
+                top: 60px;
+                /* Abaixo do header */
+                left: 0;
+                width: 100%;
+                background-color: #444;
+                /* Fundo do menu mobile */
+                max-height: 0;
+                /* Começa oculto */
+                overflow: hidden;
+                /* Esconde o conteúdo que vaza */
+                transition: max-height 0.5s ease-in-out;
+                /* Transição suave */
+                z-index: 1000;
+                /* Garante que o menu fique por cima de outros elementos */
+            }
+
+            .main-nav.active {
+                max-height: 300px;
+                /* Altura máxima quando ativo (ajuste conforme o número de links) */
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                /* Itens da lista em coluna */
+                align-items: center;
+                /* Centraliza os itens */
+                padding: 10px 0;
+                /* Espaçamento interno */
+            }
+
+            .main-nav ul li {
+                margin: 10px 0;
+                /* Espaçamento vertical entre os itens */
+                width: 100%;
+                /* Ocupa a largura total para cliques fáceis */
+                text-align: center;
+            }
+
+            .main-nav ul li a {
+                display: block;
+                /* O link ocupa toda a área do li */
+                padding: 10px 0;
+                border-bottom: 1px solid #555;
+                /* Linha divisória entre os itens */
+            }
+
+            .main-nav ul li:last-child a {
+                border-bottom: none;
+                /* Remove a borda do último item */
+            }
+
+            /* Efeito de Animação do Hamburguer (X) */
+            .hamburger-menu.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+                /* Barra do meio some */
+            }
+
+            .hamburger-menu.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">Seu Logo</a>
+
+        <div class="hamburger-menu" id="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <nav class="main-nav" id="main-nav">
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Serviços</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding: 20px;">
+        <h1>Conteúdo da Página</h1>
+        <p>Redimensione a janela do navegador para ver o menu hambúrguer aparecer e funcionar.</p>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const mainNav = document.getElementById('main-nav');
+
+            if (hamburgerMenu && mainNav) {
+                hamburgerMenu.addEventListener('click', function () {
+                    // Alterna a classe 'active' no ícone do hambúrguer (para a animação do X)
+                    hamburgerMenu.classList.toggle('active');
+                    // Alterna a classe 'active' na navegação (para mostrar/ocultar)
+                    mainNav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
