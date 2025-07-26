@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid e Flexbox</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .card {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid black;
+            border-radius: 10px;
+            box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.5);
+            height: 300px;
+        }
+
+        .card img {
+            width: 80px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 200px);
+            gap: 15px;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #flex-container{
+            margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            height: 100vh;
+        }
+
+        @media(max-width: 450px){
+            .container {
+            display: grid;
+            grid-template-columns: repeat(2, 200px);
+            gap: 15px;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        }
+
+        @media(max-width: 250px){
+            .container {
+            display: grid;
+            grid-template-columns: repeat(1, 200px);
+            gap: 15px;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div id="flex-container">
+    <div class="container">
+        <div class="card">
+            <img src="https://static.zerochan.net/Uchiha.Itachi.1024.4156518.webp" alt="">
+            <p>Uchiha Itachi</p>
+        </div>
+        <div class="card">
+            <img src="https://static.zerochan.net/Hatake.Kakashi.1024.4147044.webp" alt="">
+            <p>Hatake Kakashi</p>
+        </div>
+        <div class="card">
+            <img src="https://static.zerochan.net/Uzumaki.Naruto.1024.4147009.webp" alt="">
+            <p>Uzumaki Naruto</p>
+        </div>
+        <div class="card">
+            <img src="https://static.zerochan.net/Haruno.Sakura.1024.4147024.webp" alt="">
+            <p>Haruno Sakura</p>
+        </div>
+        <div class="card">
+            <img src="https://s1.zerochan.net/Sasori.600.724962.jpg" alt="">
+            <p>Sasori</p>
+        </div>
+        <div class="card">
+            <img src="https://static.zerochan.net/Namikaze.Minato.1024.4147602.webp" alt="">
+            <p>Namikaze Minato</p>
+        </div>
+        <div class="card">
+            <img src="https://static.zerochan.net/Uchiha.Madara.1024.4156538.webp" alt="">
+            <p>Uchiha Madara</p>
+        </div>
+        <div class="card">
+            <img src="https://static.zerochan.net/Nara.Shikamaru.1024.4147072.webp" alt="">
+            <p>Nara Shikamaru</p>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
